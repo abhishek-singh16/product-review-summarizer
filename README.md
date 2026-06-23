@@ -1,6 +1,6 @@
-# Email Humanizer - LangChain Single Agent Project
+# Product Review Summarizer - LangChain Single Agent Project
 
-A beginner-friendly project that teaches you how to build a **single agent** using **LangChain + OpenAI**. The agent takes a brief email idea and generates a natural, human-sounding email.
+A beginner-friendly project that teaches you how to build a **single agent** using **LangChain + OpenAI**. The agent takes a batch of customer reviews and produces a structured sentiment analysis along with a clear pros-and-cons summary.
 
 ## What You'll Learn
 
@@ -13,22 +13,22 @@ A beginner-friendly project that teaches you how to build a **single agent** usi
 ## How It Works
 
 ```
-User's email idea
+User's batch of customer reviews (separated by '|')
        |
        v
-  [Agent thinks: "I need to draft an email first"]
+  [Agent thinks: "I need to analyze sentiment first"]
        |
        v
-  [Tool: draft_email] --> creates a formal, structured email
+  [Tool: analyze_review_sentiment] --> overall sentiment, positive/negative split, recurring themes
        |
        v
-  [Agent thinks: "Now I should humanize this draft"]
+  [Agent thinks: "Now I should summarize the pros and cons"]
        |
        v
-  [Tool: humanize_email] --> rewrites it to sound natural and warm
+  [Tool: summarize_pros_and_cons] --> structured Pros / Cons list + actionable takeaway
        |
        v
-  Final humanized email returned to user
+  Final summary returned to user
 ```
 
 ## Prerequisites
@@ -41,8 +41,8 @@ User's email idea
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/NisargKadam/Langchain_sample_project.git
-cd Langchain_sample_project
+git clone <your-repo-url>
+cd product-review-summarizer
 ```
 
 ### 2. Create a virtual environment
@@ -85,68 +85,61 @@ OPENAI_API_KEY=sk-your-actual-key-here
 ## Run
 
 ```bash
-python email_humanizer.py
+python product_review_summarizer.py
 ```
 
 You'll see an interactive prompt:
 
 ```
 ============================================================
-  EMAIL HUMANIZER AGENT
+  PRODUCT REVIEW SUMMARIZER AGENT
   Powered by LangChain + OpenAI
 ============================================================
 
-Describe the email you want to write, and the agent will
-create a natural, human-sounding email for you.
+Describe the product reviews you want to analyze, and the agent will
+create a summary for you.
 
 Type 'quit' to exit.
 
-Your email idea:
+Your product reviews (separate multiple reviews with '|'):
 ```
 
-Type your email idea (e.g., `thank my team for finishing the project on time`) and the agent will generate a humanized email. You'll also see detailed logs showing the agent's reasoning and tool calls.
+Paste your reviews separated by `|` and the agent will analyze sentiment and generate a structured pros-and-cons summary. You'll also see detailed logs showing the agent's reasoning and tool calls.
 
 ## Example
 
 **Input:**
 ```
-thank my team for finishing the project on time
+This hand wash is amazing! The scent is so refreshing.|I didn't like the texture, it felt too thick.|Great value for the price. Will buy again.|The packaging is beautiful and eco-friendly.|Not moisturizing enough for my dry skin.
 ```
 
 **Output:**
 ```
-Subject: Huge Thanks for Your Amazing Work on the Project!
+Pros:
+1. Refreshing and pleasant scent
+2. Great value for the price
+3. Beautiful, eco-friendly packaging
 
-Hey Team,
+Cons:
+1. Texture is too thick for some users
+2. Not moisturizing enough for dry skin
 
-I hope you're all doing well! I just wanted to take a minute to say a big
-thank you for all the hard work you put into getting the project done on time.
-Your dedication and teamwork really made a difference, and I can't tell you
-how much I appreciate it.
-
-Each of you brought something special to the table, and I'm so proud to be
-part of such a talented group. Let's keep this momentum going and continue
-to achieve great things together!
-
-Thanks again for everything!
-
-Best,
-[Your Name]
+Takeaway: Consider offering a lighter-formula variant to address texture and moisturization concerns while retaining the popular scent and eco-friendly packaging.
 ```
 
 ## Project Structure
 
 ```
 .
-├── email_humanizer.py   # Main agent code (fully commented)
-├── requirements.txt     # Python dependencies
-├── .env.example         # API key template
-├── .gitignore           # Keeps secrets and venv out of git
-└── README.md            # This file
+├── product_review_summarizer.py   # Main agent code (fully commented)
+├── requirements.txt               # Python dependencies
+├── .env.example                   # API key template
+├── .gitignore                     # Keeps secrets and venv out of git
+└── README.md                      # This file
 ```
 
 ## Tech Stack
 
 - [LangChain](https://python.langchain.com/) - Framework for building LLM applications
-- [OpenAI GPT-4o-mini](https://platform.openai.com/) - The LLM powering the agent
+- [OpenAI GPT-4.1-mini](https://platform.openai.com/) - The LLM powering the agent
 - [python-dotenv](https://pypi.org/project/python-dotenv/) - Environment variable management
