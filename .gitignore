@@ -4,3 +4,4 @@ __pycache__/
 *.pyc
 # ignore files  ending with .bkp
 *.bkp
+*.DS_Store
