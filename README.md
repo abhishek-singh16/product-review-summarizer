@@ -41,7 +41,7 @@ User's batch of customer reviews (separated by '|')
 ### 1. Clone the repository
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/abhishek-singh16/product-review-summarizer.git
 cd product-review-summarizer
 ```
 
